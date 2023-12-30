@@ -17,7 +17,8 @@ class DriverFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nama_driver' => fake()->name(),
+            'sim' => 'SIM B',
         ];
     }
 }
