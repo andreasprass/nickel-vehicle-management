@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_driver');
+            //dapat ditambahkan foto pengemudi
+            $table->string('sim');
             $table->timestamps();
         });
     }

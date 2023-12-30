@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('kendaraans', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_kendaraan');
+            $table->string('jenis_kendaraan');
+            $table->tinyInteger('nomor_polisi');
+            $table->tinyInteger('tahun_pembuatan');
+            $table->tinyInteger('tanggal_beli/sewa');
+            // Hak milik / sewa
+            $table->tinyInteger('status_kendaraan');
             $table->timestamps();
         });
     }

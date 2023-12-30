@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('servis', function (Blueprint $table) {
             $table->id();
+            $table->dateTime('tanggal_servis');
+            //dapat ditambahkan gambar/foto nota biaya
+            $table->tinyInteger('biaya_servis');
+            $table->tinyInteger('km_servis_terakhir');
+            $table->tinyInteger('km_servis_selanjutnya');
             $table->timestamps();
         });
     }
