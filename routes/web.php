@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DriverController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,12 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard')->middleware('auth');
+
+Route::get('/user',[UserController::class, 'index'])->name('user')->middleware('auth');
+Route::post('/user',[UserController::class, 'store'])->name('store_user')->middleware('auth');
+
+Route::get('/driver',[DriverController::class, 'index'])->name('driver')->middleware('auth');
+Route::post('/driver',[DriverController::class, 'index'])->name('driver')->middleware('auth');
 
 Route::get('/login',[AuthController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login',[AuthController::class, 'loginValidation'])->name('loginValidation')->middleware('guest');
