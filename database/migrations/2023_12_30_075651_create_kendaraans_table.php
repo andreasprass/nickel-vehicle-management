@@ -11,15 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('kendaraans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_user');
-            $table->string('email')->unique();
-            $table->string('password');
-            // 1 = user, 2 = admin
-            $table->foreignId('level')->default(1);
-            $table->foreignId('id_jabatan')->nullable();
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -29,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('kendaraans');
     }
 };
