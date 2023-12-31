@@ -93,7 +93,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
 
             <li class="nav-item">
-                <a href="{{ route('dashboardmain') }}" class="nav-link">
+                <a href="{{ url('dashboardmain') }}" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         Dashboard
@@ -110,13 +110,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
                 <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('user') }}" class="nav-link">
+                    <a href="{{ url('user') }}" class="nav-link ">
                         <i class="far fa-circle nav-icon"></i>
                         <p>User</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ URL::to('driver') }}" class="nav-link ">
+                    <a href="{{ url('driver') }}" class="nav-link ">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Driver</p>
                     </a>

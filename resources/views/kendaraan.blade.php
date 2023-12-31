@@ -1,5 +1,5 @@
 @extends('layout.dashboard_layout',[
-    'title' => 'Driver',
+    'title' => 'Kendaraan',
 ])
 
 @section('main')
@@ -28,7 +28,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Data Driver</h3>
+                    <h3 class="card-title">Data Kendaraan</h3>
                 </div>
                 <div class="card-body">
                     <table class="table display table-striped dt-responsive nowrap" style="width:100%" id="users_tabel">

@@ -31,8 +31,9 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="{{ route('update_user') }}" method="post">
+                <form action="{{ url('user/'.$user->id) }}" method="post">
                     @csrf
+                    @method('PUT')
                   <div class="card-body">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Nama</label>
@@ -68,16 +69,14 @@
                     <div class="form-group">
                         <label>Jabatan</label>
                         <select class="form-select" name="id_jabatan">
+                          <option>-- Pilih --</option>
                             @if($user->id_jabatan == 2)
-                                <option>-- Pilih --</option>
                                 <option value="2" selected>Manager</option>
                                 <option value="1">Supervisor</option>
                             @elseif($user->id_jabatan == 1)
-                                <option>-- Pilih --</option>
                                 <option value="2">Manager</option>
                                 <option value="1" selected>Supervisor</option>
                             @else
-                                <option>-- Pilih --</option>
                                 <option value="2">Manager</option>
                                 <option value="1">Supervisor</option>
                             @endif
@@ -87,7 +86,7 @@
                   <!-- /.card-body -->
   
                   <div class="card-footer">
-                    <a href="{{ route('user') }}" class="btn btn-secondary">Kembali</a>
+                    <a href="{{ url('user') }}" class="btn btn-secondary">Kembali</a>
                     <button type="submit" class="btn btn-warning">Submit</button>
                   </div>
                 </form>

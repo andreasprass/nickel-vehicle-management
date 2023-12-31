@@ -31,7 +31,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="{{ route('store_user') }}" method="post">
+                <form action="{{ url('user') }}" method="post">
                     @csrf
                   <div class="card-body">
                     <div class="form-group">
@@ -49,7 +49,7 @@
                     <div class="form-group">
                         <label>Level</label>
                         <select class="form-select" name="level">
-                            <option>-- Pilih --</option>
+                            <option></option>
                             <option value="2">Admin</option>
                             <option value="1">Staff</option>
                         </select>
@@ -57,7 +57,7 @@
                     <div class="form-group">
                         <label>Jabatan</label>
                         <select class="form-select" name="id_jabatan">
-                            <option>-- Pilih --</option>
+                            <option></option>
                             <option value="2">Manager</option>
                             <option value="1">Supervisor</option>
                         </select>

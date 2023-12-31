@@ -25,7 +25,7 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <a href="{{ route('create_user') }}" class="btn btn-primary mb-3">Tambah User <span><i class="fa fa-user-plus"></i></span></a>
+            <a href="{{ url('user/create') }}" class="btn btn-primary mb-3">Tambah User <span><i class="fa fa-user-plus"></i></span></a>
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Data User</h3>
@@ -66,9 +66,9 @@
                                     @endif 
                                 </td>
                                 <td>
-                                    <a href="user-edit/{{ $user->id }}" class="btn btn-warning"><span> <i class="fas fa-pencil-alt"></i></span></a>
+                                    <a href="{{ url('user/'.$user->id.'/edit') }}" class="btn btn-warning"><span> <i class="fas fa-pencil-alt"></i></span></a>
                                     
-                                    <form action="user-destroy/{{ $user->id }}" method="post" class="d-inline">
+                                    <form action="{{ url('user/'.$user->id) }}}}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger" onclick="return confirm('Are you sure?')"><span><i class="fas fa-trash"></i></span></button>

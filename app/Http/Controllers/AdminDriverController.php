@@ -81,7 +81,7 @@ class AdminDriverController extends Controller
     {
         //
         if(Driver::destroy($driver->id)){
-            return redirect()->route('user')->with('success', 'The data has been deleted');
+            return redirect()->route('driver.index')->with('success', 'The data has been deleted');
         }else{
             return back();
         }
