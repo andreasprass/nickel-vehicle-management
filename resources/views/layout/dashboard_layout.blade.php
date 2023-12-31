@@ -51,12 +51,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  href="#" role="button">
+        <form action="{{ route('logout') }}" method="post">
+        @csrf
+        <button type="submit" class="nav-link">
           <p>
             Logout
             <i class="fas fa-power-off"></i>
           </p>
-        </a>
+        </button>
+      </form>
       </li>
     </ul>
   </nav>
@@ -90,7 +93,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
 
             <li class="nav-item">
-                <a href="{{ route('dashboard') }}" class="nav-link">
+                <a href="{{ route('dashboardmain') }}" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         Dashboard
@@ -98,7 +101,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
             </li>
             <li class="nav-item menu-open">
-                <a href="#" class="nav-link">
+                <a href="" class="nav-link">
                     <i class="nav-icon fas fa-book"></i>
                     <p>
                         Data
@@ -107,13 +110,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
                 <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('user') }}" class="nav-link ">
+                    <a href="{{ route('user') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>User</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('driver') }}" class="nav-link">
+                    <a href="{{ URL::to('driver') }}" class="nav-link ">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Driver</p>
                     </a>
@@ -181,7 +184,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 <script type="text/javascript">
   $(function () {
-      $("#users_tabel").DataTable( {
+      // $("#users_tabel").DataTable( {
+      //   dom: 'Bfrtip',
+      //   buttons: [
+      //       'copy', 'csv', 'excel', 'pdf', 'print'
+      //   ]
+      // });
+
+      $('#users_tabel').DataTable( {
         dom: 'Bfrtip',
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
