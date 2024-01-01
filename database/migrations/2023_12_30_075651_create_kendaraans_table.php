@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nama_kendaraan');
             $table->string('jenis_kendaraan');
-            $table->tinyInteger('nomor_polisi');
-            $table->tinyInteger('tahun_pembuatan');
-            $table->tinyInteger('tanggal_beli/sewa');
+            $table->string('nomor_polisi');
+            $table->bigInteger('tahun_pembuatan');
+            $table->dateTime('tanggal_beli_sewa');
             // Hak milik / sewa
             $table->tinyInteger('status_kendaraan');
             $table->timestamps();

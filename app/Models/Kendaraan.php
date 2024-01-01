@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Kendaraan extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'nama_kendaraan',
+        'jenis_kendaraan',
+        'nomor_polisi',
+        'tahun_pembuatan',
+        'tanggal_beli_sewa',
+        'status_kendaraan'
+    ];
 }

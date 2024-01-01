@@ -25,7 +25,6 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Data Driver</h3>

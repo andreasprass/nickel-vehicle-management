@@ -17,6 +17,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset("assets/adminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css")}}">
     <link rel="stylesheet" href="{{ asset("assets/adminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css")}}">
     <link rel="stylesheet" href="{{ asset("assets/adminLTE/plugins/datatables-buttons/css/buttons.bootstrap4.min.css")}}">
+    
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="{{ asset("assets/adminLTE/plugins/daterangepicker/daterangepicker.css")}}">
+     <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="{{ asset("assets/adminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css")}}">
 
     
      {{-- Public DataTable --}}
@@ -122,7 +127,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('kendaraan') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Kendaraan</p>
                     </a>
@@ -130,7 +135,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ url('pemesanan') }}" class="nav-link">
                     <i class="nav-icon far fa-clipboard"></i>
                 <p>
                     Pemesanan
@@ -139,7 +144,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ url('pemesanan') }}" class="nav-link">
                     <i class="nav-icon fas fa-cogs"></i>
                 <p>
                     Servis Kendaraan
@@ -147,7 +152,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ url('pemesanan') }}" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                 <p>
                     Simple Link
@@ -177,19 +182,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="{{ asset("assets/adminLTE/plugins/jquery/jquery.min.js") }}"></script>
-
-<script src="{{ asset("assets/DataTables/datatables.js")}}"></script>
+<script src="{{ asset("assets/adminLTE/plugins/jquery/jquery.min.js")}}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset("assets/adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset("assets/adminLTE/dist/js/adminlte.min.js") }}"></script>
 
 <!-- REQUIRED SCRIPTS -->
 <script type="text/javascript">
   $(function () {
-      // $("#users_tabel").DataTable( {
-      //   dom: 'Bfrtip',
-      //   buttons: [
-      //       'copy', 'csv', 'excel', 'pdf', 'print'
-      //   ]
-      // });
 
       $('#users_tabel').DataTable( {
         dom: 'Bfrtip',
@@ -197,15 +198,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
       });
+      //Date and time picker
+      $('#tanggal_beli_sewa').datetimepicker({ 
+        icons: { time: 'far fa-clock' },
+        format: 'YYYY-MM-DD hh:mm:ss',
+      });
   });
 </script>
 
+<!-- jQuery -->
+<script src="{{ asset("assets/adminLTE/plugins/jquery/jquery.min.js") }}"></script>
+
+<script src="{{ asset("assets/DataTables/datatables.js")}}"></script>
+<!-- date-range-picker -->
+<script src="{{ asset("assets/adminLTE/plugins/moment/moment.min.js")}}"></script>
+<script src="{{ asset("assets/adminLTE/plugins/daterangepicker/daterangepicker.js")}}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{{ asset("assets/adminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js")}}"></script>
 
 
-<!-- Bootstrap 4 -->
-<script src="{{ asset("assets/adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset("assets/adminLTE/dist/js/adminlte.min.js") }}"></script>
+
 
 
 </body>

@@ -18,6 +18,13 @@ class KendaraanFactory extends Factory
     {
         return [
             //
+            'nama_kendaraan' => 'Mercedes',
+            'jenis_kendaraan' => 'Angkutan Barang',
+            'nomor_polisi' => 'AG4455KBI',
+            'tahun_pembuatan'=> 2009,
+            'tanggal_beli_sewa'=> fake()->dateTime('+10 years'),
+            'status_kendaraan'=> rand(1,2),
+
         ];
     }
 }

@@ -25,7 +25,7 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-
+            <a href="{{ url('kendaraan/create') }}" class="btn btn-primary mb-3">Tambah Data Kendaraan <span><i class="fa fa-car"></i></span></a>
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Data Kendaraan</h3>
@@ -36,20 +36,34 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>SIM</th>
+                                <th>Jenis</th>
+                                <th>Nopol</th>
+                                <th>Tahun</th>
+                                <th>Tanggal Beli/Sewa</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($drivers as $driver)
+                            @foreach ($kendaraans as $kendaraan)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $driver->nama_driver }}</td>
-                                <td>{{ $driver->sim }}</td>
+                                <td>{{ $kendaraan->nama_kendaraan }}</td>
+                                <td>{{ $kendaraan->jenis_kendaraan }}</td>
+                                <td>{{ $kendaraan->nomor_polisi }}</td>
+                                <td>{{ $kendaraan->tahun_pembuatan }}</td>
+                                <td>{{ $kendaraan->tanggal_beli_sewa }}</td>
                                 <td>
-                                    <a href="{{ url("driver/$driver->id/edit") }}" class="btn btn-warning"><span> <i class="fas fa-pencil-alt"></i></span></a>
+                                    @if($kendaraan->status_kendaraan == 1)
+                                    Hak Milik
+                                    @else
+                                    Sewa
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{ url("kendaraan/$kendaraan->id/edit") }}" class="btn btn-warning"><span> <i class="fas fa-pencil-alt"></i></span></a>
                                     
-                                    <form action="{{ url("driver/$driver->id") }}" method="post" class="d-inline">
+                                    <form action="{{ url("kendaraan/$kendaraan->id") }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger" onclick="return confirm('Are you sure?')"><span><i class="fas fa-trash"></i></span></button>
@@ -63,7 +77,11 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>SIM</th>
+                                <th>Jenis</th>
+                                <th>Nopol</th>
+                                <th>Tahun</th>
+                                <th>Tanggal Beli/Sewa</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>

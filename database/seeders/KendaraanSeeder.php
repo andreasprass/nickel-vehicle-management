@@ -13,5 +13,6 @@ class KendaraanSeeder extends Seeder
     public function run(): void
     {
         //
+        \App\Models\Kendaraan::factory(25)->create();
     }
 }

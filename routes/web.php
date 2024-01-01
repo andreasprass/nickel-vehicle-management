@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminDashboard;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminDriverController;
+use App\Http\Controllers\AdminKendaraanController;
 
 /*
 |--------------------------------------------------------------------------
