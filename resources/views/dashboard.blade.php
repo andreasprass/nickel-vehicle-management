@@ -30,7 +30,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{ $driversCount }}</h3>
+                <h3>{{ $kendaraanCount }}</h3>
 
                 <p>Kendaraan</p>
               </div>
@@ -60,7 +60,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3>{{ $driversCount }}</h3>
 
                 <p>Driver</p>
               </div>
