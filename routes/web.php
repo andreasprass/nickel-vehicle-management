@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminDriverController;
 use App\Http\Controllers\AdminKendaraanController;
+use App\Http\Controllers\AdminPemesananController;
 
 /*
 |--------------------------------------------------------------------------

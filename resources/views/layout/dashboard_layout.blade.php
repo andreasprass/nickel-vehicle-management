@@ -98,14 +98,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
 
             <li class="nav-item">
-                <a href="{{ url('dashboard') }}" class="nav-link">
+                <a href="{{ url('dashboard') }}" class="nav-link {{ Request::is('dashboard') || Request::is('/')? 'active':'' }}">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         Dashboard
                     </p>
                 </a>
             </li>
-            <li class="nav-item menu-open">
+            <li class="nav-item {{ Request::is('user')||Request::is('driver')||Request::is('kendaraan')?'menu-open menu-is-opening':'' }}">
                 <a href="" class="nav-link">
                     <i class="nav-icon fas fa-book"></i>
                     <p>
@@ -115,19 +115,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
                 <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ url('user') }}" class="nav-link ">
+                    <a href="{{ url('user') }}" class="nav-link {{ Request::is('user')?'active':'' }} ">
                         <i class="far fa-circle nav-icon"></i>
                         <p>User</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('driver') }}" class="nav-link ">
+                    <a href="{{ url('driver') }}" class="nav-link {{ Request::is('driver')?'active':'' }} ">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Driver</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('kendaraan') }}" class="nav-link">
+                    <a href="{{ url('kendaraan') }}" class="nav-link {{ Request::is('kendaraan')?'active':'' }} ">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Kendaraan</p>
                     </a>
@@ -135,7 +135,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="{{ url('pemesanan') }}" class="nav-link">
+                <a href="{{ url('pemesanan') }}" class="nav-link {{ Request::is('pemesanan')?'active':'' }} ">
                     <i class="nav-icon far fa-clipboard"></i>
                 <p>
                     Pemesanan
@@ -144,22 +144,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('pemesanan') }}" class="nav-link">
+                <a href="{{ url('servis') }}" class="nav-link {{ Request::is('servis')?'active':'' }} ">
                     <i class="nav-icon fas fa-cogs"></i>
                 <p>
                     Servis Kendaraan
                 </p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{ url('pemesanan') }}" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                <p>
-                    Simple Link
-                    <span class="right badge badge-danger">New</span>
-                </p>
-                </a>
-            </li>
+            
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -195,11 +187,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
       $('#users_tabel').DataTable( {
         dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+          {
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                  columns: ':not(:last-child)',
+                }
+            },
+            'colvis'
+
         ]
       });
       //Date and time picker
       $('#tanggal_beli_sewa').datetimepicker({ 
+        icons: { time: 'far fa-clock' },
+        format: 'YYYY-MM-DD hh:mm:ss',
+      });
+      $('#waktu_penggunaan').datetimepicker({ 
+        icons: { time: 'far fa-clock' },
+        format: 'YYYY-MM-DD hh:mm:ss',
+      });
+      $('#waktu_pengembalian').datetimepicker({ 
         icons: { time: 'far fa-clock' },
         format: 'YYYY-MM-DD hh:mm:ss',
       });

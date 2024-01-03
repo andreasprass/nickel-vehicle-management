@@ -18,7 +18,7 @@ class KendaraanFactory extends Factory
     {
         return [
             //
-            'nama_kendaraan' => 'Mercedes',
+            'nama_kendaraan' => 'Car',
             'jenis_kendaraan' => 'Angkutan Barang',
             'nomor_polisi' => 'AG4455KBI',
             'tahun_pembuatan'=> 2009,

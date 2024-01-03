@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminUserController extends Controller
 {
@@ -13,7 +14,7 @@ class AdminUserController extends Controller
     public function index()
     {
         //
-        $users = User::all();
+        $users = User::orderBy('nama_user')->get();
         return view('user',[
             'users' => $users,
         ]);
@@ -36,6 +37,7 @@ class AdminUserController extends Controller
     {
         //
         $data = $request->all();
+        $data['password'] = Hash::make($data['password']);
         if(User::create($data)){
             return redirect('/user');
         }else{

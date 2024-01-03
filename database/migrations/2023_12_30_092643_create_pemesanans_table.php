@@ -13,16 +13,24 @@ return new class extends Migration
     {
         Schema::create('pemesanans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_driver');
+            $table->foreignId('id_kendaraan');
+            $table->string('keperluan');
             $table->dateTime('waktu_penggunaan');
-            $table->dateTime('waktu_pengembalian');
-            $table->string('penyetuju1');
-            $table->tinyInteger('status_persetujuan1');
-            $table->string('penyetuju2');
-            $table->tinyInteger('status_persetujuan2');
-            $table->tinyInteger('km_awal');
-            $table->tinyInteger('km_akhir');
-            $table->tinyInteger('bbm');
-            $table->tinyInteger('konsumsi_bbm');
+            $table->dateTime('waktu_pengembalian')->nullable();
+            $table->foreignId('penyetuju1');
+            // 0 menunggu - 1 disetujui
+            $table->tinyInteger('status_persetujuan1')->default(0);
+            $table->foreignId('penyetuju2');
+            // 0 menunggu - 1 disetujui
+            $table->tinyInteger('status_persetujuan2')->default(0);
+            $table->bigInteger('km_awal');
+            $table->bigInteger('km_akhir')->nullable();
+            $table->bigInteger('bbm')->nullable();
+            $table->bigInteger('konsumsi_bbm')->nullable();
+            $table->foreignId('id_user');
+            // 0 peminjaman - 1 selesai
+            $table->tinyInteger('status_pemesanan')->default(0);
             $table->timestamps();
         });
     }
