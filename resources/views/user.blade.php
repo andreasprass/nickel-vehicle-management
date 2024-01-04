@@ -68,7 +68,7 @@
                                 <td>
                                     <a href="{{ url('user/'.$user->id.'/edit') }}" class="btn btn-warning"><span> <i class="fas fa-pencil-alt"></i></span></a>
                                     
-                                    <form action="{{ url('user/'.$user->id) }}}}" method="post" class="d-inline">
+                                    <form action="{{ url('user/'.$user->id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger" onclick="return confirm('Are you sure?')"><span><i class="fas fa-trash"></i></span></button>

@@ -33,6 +33,7 @@
                 <!-- form start -->
                 <form action="{{ url('pemesanan') }}" method="post">
                     @csrf
+                    @method('PUT')
                   <div class="card-body">
                     <div class="form-group">
                         <label>Driver</label>

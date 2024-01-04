@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminDashboard;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminDriverController;
+use App\Http\Controllers\AdminServisController;
 use App\Http\Controllers\AdminKendaraanController;
 use App\Http\Controllers\AdminPemesananController;
 
@@ -26,7 +27,7 @@ Route::resource('driver',AdminDriverController::class)->middleware('auth');
 Route::resource('user',AdminUserController::class)->middleware('auth');
 Route::resource('kendaraan',AdminKendaraanController::class)->middleware('auth');
 Route::resource('pemesanan',AdminPemesananController::class)->middleware('auth');
-Route::resource('servis',AdminServisController::class)->middleware('auth');
+Route::resource('service',AdminServisController::class)->middleware('auth');
 
 Route::get('/login',[AuthController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login',[AuthController::class, 'loginValidation'])->name('loginValidation')->middleware('guest');

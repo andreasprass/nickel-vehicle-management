@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Servis;
+use App\Models\Kendaraan;
 use Illuminate\Http\Request;
 
 class AdminServisController extends Controller
@@ -13,7 +14,10 @@ class AdminServisController extends Controller
     public function index()
     {
         //
-        return view('servis');
+        $data = Servis::all();
+        return view('servis',[
+            'services' => $data,
+        ]);
     }
 
     /**
@@ -22,7 +26,10 @@ class AdminServisController extends Controller
     public function create()
     {
         //
-        return view('servis_add');
+        $kendaraans = Kendaraan::all();
+        return view('servis_add',[
+            'kendaraans' => $kendaraans,
+        ]);
     }
 
     /**
@@ -31,6 +38,13 @@ class AdminServisController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->all();
+        if(Servis::create($data)){
+            return redirect('/servis');
+        }else{
+            return back();
+        }
+
     }
 
     /**
@@ -39,29 +53,44 @@ class AdminServisController extends Controller
     public function show(Servis $servis)
     {
         //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Servis $servis)
+    public function edit(Servis $service)
     {
         //
+        $kendaraans = Kendaraan::select('id','nama_kendaraan')->get();
+        $data = Servis::find($service->id);
+        return view('servis_edit',[
+            'service'=> $service,
+            'kendaraans' => $kendaraans,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Servis $servis)
+    public function update(Request $request, Servis $service)
     {
         //
+        $data = $request->except(['_token','_method']);
+        Servis::where('id',$service->id)->update($data);
+        return redirect()->route('service.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Servis $servis)
+    public function destroy(Servis $service)
     {
         //
+        if(Servis::where('id',$service->id)->delete()){
+            return redirect()->route('service.index')->with('success', 'The data has been deleted');
+        }else{
+            return back();
+        }
     }
 }

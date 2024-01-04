@@ -25,7 +25,7 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <a href="{{ url('servis/create') }}" class="btn btn-primary mb-3">Tambah Data Servis <span><i class="fa fa-car"></i></span></a>
+            <a href="{{ url('service/create') }}" class="btn btn-primary mb-3">Tambah Data Servis <span><i class="fa fa-cogs"></i></span></a>
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Data Servis</h3>
@@ -35,38 +35,32 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
-                                <th>Jenis</th>
-                                <th>Nopol</th>
-                                <th>Tahun</th>
-                                <th>Tanggal Beli/Sewa</th>
-                                <th>Status</th>
+                                <th>Tempat Servis</th>
+                                <th>Kendaraan</th>
+                                <th>Tanggal</th>
+                                <th>Total Biaya</th>
+                                <th>KM Terakhir</th>
+                                <th>KM Selanjutnya</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($kendaraans as $kendaraan)
+                            @foreach ($services as $service)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $kendaraan->nama_kendaraan }}</td>
-                                <td>{{ $kendaraan->jenis_kendaraan }}</td>
-                                <td>{{ $kendaraan->nomor_polisi }}</td>
-                                <td>{{ $kendaraan->tahun_pembuatan }}</td>
-                                <td>{{ $kendaraan->tanggal_beli_sewa }}</td>
+                                <td>{{ $service->tempat_servis }}</td>
+                                <td>{{ $service->kendaraans->nama_kendaraan }}</td>
+                                <td>{{ $service->tanggal_servis }}</td>
+                                <td>{{ $service->total_biaya_servis }}</td>
+                                <td>{{ $service->km_servis_terakhir }}</td>
+                                <td>{{ $service->km_servis_selanjutnya }}</td>
                                 <td>
-                                    @if($kendaraan->status_kendaraan == 1)
-                                    Hak Milik
-                                    @else
-                                    Sewa
-                                    @endif
-                                </td>
-                                <td>
-                                    <a href="{{ url("kendaraan/$kendaraan->id/edit") }}" class="btn btn-warning"><span> <i class="fas fa-pencil-alt"></i></span></a>
-                                    
-                                    <form action="{{ url("kendaraan/$kendaraan->id") }}" method="post" class="d-inline">
+                                    <a href="{{ url("service/$service->id") }}" class="btn btn-info"><span> <i class="fas fa-info"></i></span></a>
+                                    <a href="{{ url("service/$service->id/edit") }}" class="btn btn-warning"><span> <i class="fas fa-pencil-alt"></i></span></a>
+                                    <form action="{{ url('service/'.$service->id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
-                                        <button class="btn btn-danger" onclick="return confirm('Are you sure?')"><span><i class="fas fa-trash"></i></span></button>
+                                        <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus ini?')"><span><i class="fas fa-trash"></i></span></button>
                                     </form>
                                     
                                 </td>
@@ -76,14 +70,13 @@
                         <tfoot>
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
-                                <th>Jenis</th>
-                                <th>Nopol</th>
-                                <th>Tahun</th>
-                                <th>Tanggal Beli/Sewa</th>
-                                <th>Status</th>
+                                <th>Tempat Servis</th>
+                                <th>Kendaraan</th>
+                                <th>Tanggal</th>
+                                <th>Total Biaya</th>
+                                <th>KM Terakhir</th>
+                                <th>KM Selanjutnya</th>
                                 <th>Action</th>
-                            </tr>
                         </tfoot>
                     </table>
                 </div>

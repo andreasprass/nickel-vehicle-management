@@ -144,7 +144,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('servis') }}" class="nav-link {{ Request::is('servis')?'active':'' }} ">
+                <a href="{{ url('service') }}" class="nav-link {{ Request::is('servis')?'active':'' }} ">
                     <i class="nav-icon fas fa-cogs"></i>
                 <p>
                     Servis Kendaraan
@@ -183,7 +183,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 <script type="text/javascript">
   $(function () {
-
       $('#users_tabel').DataTable( {
         dom: 'Bfrtip',
         buttons: [
@@ -209,6 +208,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         ]
       });
+
       //Date and time picker
       $('#tanggal_beli_sewa').datetimepicker({ 
         icons: { time: 'far fa-clock' },
@@ -221,6 +221,62 @@ scratch. This page gets rid of all links and provides the needed markup only.
       $('#waktu_pengembalian').datetimepicker({ 
         icons: { time: 'far fa-clock' },
         format: 'YYYY-MM-DD hh:mm:ss',
+      });
+      $('#tanggal_servis').datetimepicker({ 
+        icons: { time: 'far fa-clock' },
+        format: 'YYYY-MM-DD hh:mm:ss',
+      });
+
+      var minDate, maxDate;
+ 
+      // Custom filtering function which will search data in column four between two values
+      DataTable.ext.search.push(function (settings, data, dataIndex) {
+          var min = minDate.val();
+          var max = maxDate.val();
+          var date = new Date(data[4]);
+      
+          if (
+              (min === null && max === null) ||
+              (min === null && date <= max) ||
+              (min <= date && max === null) ||
+              (min <= date && date <= max)
+          ) {
+              return true;
+          }
+          return false;
+      });
+ 
+      // Create date inputs
+      minDate = new DateTime('#min', {
+          format: 'MMMM Do YYYY'
+      });
+      maxDate = new DateTime('#max', {
+          format: 'MMMM Do YYYY'
+      });
+
+      $('#pemesanan_table').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+          {
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                  columns: ':not(:last-child)',
+                }
+            },
+            'colvis'
+        ]
       });
   });
 </script>
