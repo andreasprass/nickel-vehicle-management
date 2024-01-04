@@ -17,5 +17,8 @@ This Appliacation still in progress and need to make some feature and adjustment
 -   [x] Add some information details
 -   [x] Service feature
 -   [x] Add admin authorization
+-   [ ] Approval Pages and feature
+-   [ ] Order Graphic Report
+-   [ ] Order Periodic Report in Excel
 -   [ ] Add sewa feature
 -   [ ] Add validation
