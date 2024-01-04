@@ -31,7 +31,7 @@
                     <h3 class="card-title">Data Pemesanan</h3>
                 </div>
                 <div class="card-body">
-                    <table class="table display table-striped dt-responsive nowrap" style="width:100%" id="users_tabel">
+                    <table class="table display table-striped dt-responsive nowrap" style="width:100%" id="pemesanan_table">
                         <thead>
                             <tr>
                                 <th>No</th>

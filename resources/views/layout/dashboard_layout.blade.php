@@ -23,7 +23,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
      <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="{{ asset("assets/adminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css")}}">
 
-    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css">
+   
      {{-- Public DataTable --}}
     <link href="{{ asset('assets/DataTables/datatables.min.css') }}" rel="stylesheet">
 
@@ -96,7 +98,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
+            @can('admin')
             <li class="nav-item">
                 <a href="{{ url('dashboard') }}" class="nav-link {{ Request::is('dashboard') || Request::is('/')? 'active':'' }}">
                     <i class="nav-icon fas fa-th"></i>
@@ -139,7 +141,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <i class="nav-icon far fa-clipboard"></i>
                 <p>
                     Pemesanan
-                    <span class="right badge badge-danger">New</span>
                 </p>
                 </a>
             </li>
@@ -151,7 +152,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </p>
                 </a>
             </li>
-            
+            @endcan
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -186,6 +187,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       $('#users_tabel').DataTable( {
         dom: 'Bfrtip',
         buttons: [
+          {
+                extend: 'print',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                }
+            },
           {
                 extend: 'copyHtml5',
                 exportOptions: {
@@ -227,37 +234,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
         format: 'YYYY-MM-DD hh:mm:ss',
       });
 
-      var minDate, maxDate;
- 
-      // Custom filtering function which will search data in column four between two values
-      DataTable.ext.search.push(function (settings, data, dataIndex) {
-          var min = minDate.val();
-          var max = maxDate.val();
-          var date = new Date(data[4]);
-      
-          if (
-              (min === null && max === null) ||
-              (min === null && date <= max) ||
-              (min <= date && max === null) ||
-              (min <= date && date <= max)
-          ) {
-              return true;
-          }
-          return false;
-      });
- 
-      // Create date inputs
-      minDate = new DateTime('#min', {
-          format: 'MMMM Do YYYY'
-      });
-      maxDate = new DateTime('#max', {
-          format: 'MMMM Do YYYY'
-      });
-
-      $('#pemesanan_table').DataTable( {
+      $('#pemesanan_table').DataTable({
         dom: 'Bfrtip',
         buttons: [
-          {
+            {
+                extend: 'print',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                }
+            },
+            {
                 extend: 'copyHtml5',
                 exportOptions: {
                     columns: ':not(:last-child)',
@@ -275,6 +261,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   columns: ':not(:last-child)',
                 }
             },
+            
             'colvis'
         ]
       });

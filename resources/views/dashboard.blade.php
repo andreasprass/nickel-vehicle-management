@@ -25,6 +25,7 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+        @can('admin')
         <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
@@ -37,7 +38,7 @@
               <div class="icon">
                 <i class="fas fa-car"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('kendaraan') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -45,14 +46,14 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>{{ $pemesanan_active_count }}</h3>
 
-                <p>Pemesanan</p>
+                <p>Pemesanan Aktif</p>
               </div>
               <div class="icon">
                 <i class="fas fa-clipboard"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('pemesanan') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -67,7 +68,7 @@
               <div class="icon">
                 <i class="far fa-address-card"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('driver') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -75,18 +76,18 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
-
-                <p>Persetujuan</p>
+                <h3>{{ $pemesanan_perlu_persetujuan }}</h3>
+                <p>Meununggu Persetujuan</p>
               </div>
               <div class="icon">
                 <i class="fas fa-hourglass-half"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('pemesanan') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
         </div>
+        @endcan
             
         <div class="row">
           
