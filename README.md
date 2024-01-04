@@ -11,7 +11,7 @@ This web application is made to provide vehicle management system on a nickel mi
 
 This Appliacation still in progress and need to make some feature and adjustment.
 
-## Want to fix
+## Want to do
 
 -   [x] Fixing Pemesanan
 -   [x] Add some information details
