@@ -13,7 +13,9 @@ This Appliacation still in progress and need to make some feature and adjustment
 
 ## Want to fix
 
--   Fixing Pemesanan
--   Add some information details
--   Add sewa feature
--   Add validation
+-   [x] Fixing Pemesanan
+-   [x] Add some information details
+-   [x] Service feature
+-   [x] Add admin authorization
+-   [ ] Add sewa feature
+-   [ ] Add validation
