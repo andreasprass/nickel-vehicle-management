@@ -99,6 +99,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             @can('admin')
+            <li class="nav-header">ADMINISTRATOR</li>
             <li class="nav-item">
                 <a href="{{ url('dashboard') }}" class="nav-link {{ Request::is('dashboard') || Request::is('/')? 'active':'' }}">
                     <i class="nav-icon fas fa-th"></i>
@@ -149,6 +150,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <i class="nav-icon fas fa-cogs"></i>
                 <p>
                     Servis Kendaraan
+                </p>
+                </a>
+            </li>
+            @endcan
+            @can('user')
+              <li class="nav-header">USER</li>
+              <li class="nav-item">
+                <a href="{{ url('persetujuan') }}" class="nav-link {{ Request::is('servis')?'active':'' }} ">
+                    <i class="nav-icon fas fa-cogs"></i>
+                <p>
+                    Persetujuan
                 </p>
                 </a>
             </li>

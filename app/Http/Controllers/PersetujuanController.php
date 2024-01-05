@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pemesanan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PersetujuanController extends Controller
 {
@@ -12,6 +14,14 @@ class PersetujuanController extends Controller
     public function index()
     {
         //
+        // $id = Auth::user()->id;
+        // $data = Pemesanan::where('penyetuju1',$id)
+        //             ->orWhere('penyetuju2',$id)
+        //             ->get();
+
+        // return view('persetujuan',[
+        //     'persetujuans ' => $data,
+        // ]);
     }
 
     /**

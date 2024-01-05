@@ -57,12 +57,12 @@
                                     @endif 
                                 </td>
                                 <td>
-                                    @if($user->id_jabatan == 2)
+                                    @if($user->id_jabatan == 3)
                                         <i class="bi bi-check-circle-fill text-success"> </i> Manager
-                                    @elseif($user->id_jabatan == 1)
+                                    @elseif($user->id_jabatan == 2)
                                         <i class="bi bi-x-circle"> </i> Supervisor
                                     @else
-                                        <i class="bi bi-x-circle"> </i> -
+                                        <i class="bi bi-x-circle"> </i> Staff
                                     @endif 
                                 </td>
                                 <td>

@@ -25,6 +25,7 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
+            <a href="{{ url('driver/create') }}" class="btn btn-primary mb-3">Tambah Data Driver <span><i class="fa fa-user-plus"></i></span></a>
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Data Driver</h3>

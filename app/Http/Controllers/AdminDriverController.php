@@ -13,7 +13,7 @@ class AdminDriverController extends Controller
     public function index()
     {
         //
-        $drivers = Driver::all();
+        $drivers = Driver::orderBy('nama_driver')->get();
         return view('driver',[
             'drivers' => $drivers,
         ]);

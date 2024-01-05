@@ -51,15 +51,16 @@
                         <select class="form-select" name="level">
                             <option></option>
                             <option value="2">Admin</option>
-                            <option value="1">Staff</option>
+                            <option value="1">-</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Jabatan</label>
                         <select class="form-select" name="id_jabatan">
                             <option></option>
-                            <option value="2">Manager</option>
-                            <option value="1">Supervisor</option>
+                            <option value="1">Staff</option>
+                            <option value="2">Supervisor</option>
+                            <option value="3">Manager</option>
                         </select>
                       </div>
                   </div>

@@ -31,7 +31,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="{{ url('pemesanan') }}" method="post">
+                <form action="{{ url('pemesanan/'.$pemesanan_edit->id) }}" method="post">
                     @csrf
                     @method('PUT')
                   <div class="card-body">
@@ -49,9 +49,9 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Jenis Kendaraan</label>
+                        <label>Kendaraan</label>
                         <select class="form-select" name="id_kendaraan">
-                            <option>{{ $pemesanan_edit->kendaraans->nama_kendaraan }}</option>
+                            <option value="{{ $pemesanan_edit->id}}">{{ $pemesanan_edit->kendaraans->nama_kendaraan }}</option>
                             <option></option>
                             @foreach($kendaraans as $kendaraan)
                             @if($kendaraan->id == $pemesanan_edit->id_driver)
