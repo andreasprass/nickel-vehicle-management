@@ -39,8 +39,8 @@
                                 <th>Kendaraan</th>
                                 <th>Tanggal Ambil</th>
                                 <th>Tanggal Kembali</th>
-                                <th>Persetujuan 1</th>
-                                <th>Persetujuan 2</th>
+                                <th>Kepala Pool</th>
+                                <th>Kepala Terkait</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
