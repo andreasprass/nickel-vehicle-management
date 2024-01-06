@@ -76,7 +76,7 @@
                   <!-- /.card-body -->
   
                   <div class="card-footer">
-                    <a href="{{ url('servis') }}" class="btn btn-secondary">Kembali</a>
+                    <a href="{{ url('service') }}" class="btn btn-secondary">Kembali</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </div>
                 </form>
