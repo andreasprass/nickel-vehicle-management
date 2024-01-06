@@ -24,10 +24,24 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'nama_user' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'password' =>  Hash::make('admin'),
-            'level' => 1,
+            [
+                'nama_user' => 'Gojo Satoru',
+                'email' => 'gojo@gmail.com',
+                'password' => Hash::make('gojo'),
+                'level'=>2,
+            ],
+            [
+                'nama_user' => 'Nanami Kento',
+                'email' => 'nanami@gmail.com',
+                'password' => Hash::make('nanami'),
+                'level'=>1,
+            ],
+            [
+                'nama_user' => 'Itadori Yuji',
+                'email' => 'yuji@gmail.com',
+                'password' => Hash::make('yuji'),
+                'level'=>1,
+            ],
         ];
     }
 

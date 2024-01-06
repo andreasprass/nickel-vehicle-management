@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Driver;
+use App\Models\Jabatan;
 use App\Models\Kendaraan;
 use App\Models\Pemesanan;
 use Illuminate\Http\Request;
@@ -28,15 +29,23 @@ class AdminPemesananController extends Controller
     public function create()
     {
         //
-        $users = User::select('id','nama_user','level')->orderBy('nama_user')->get();
+        $users = User::orderBy('nama_user')->get();
         $drivers = Driver::select('id','nama_driver')->orderBy('nama_driver')->get();
         $kendaraans = Kendaraan::select('id','nama_kendaraan')->orderBy('nama_kendaraan')->get();
         $pemesanans = Pemesanan::select('id', 'id_driver')->get();
 
+        
+        $kepala_pool = Jabatan::where('kepala_pool',1)->pluck('id');
+        if($kepala_pool == null){
+            $kepala_pool = 'Pilih Jabatan untuk Mengelola Pool';
+        }else{
+            $kepala_pool_user = User::where('id_jabatan', $kepala_pool)->first();
+        }
         return view('pemesanan_add',[
             'kendaraans' => $kendaraans,
             'drivers' => $drivers,
             'users' => $users,
+            'kepala_pool_user'=>$kepala_pool_user,
         ]);
     }
 

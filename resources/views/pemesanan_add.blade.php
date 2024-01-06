@@ -64,35 +64,22 @@
                                   <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                               </div>
                           </div>
-                    </div>
-                    {{-- <div class="form-group">
-                        <label>Tanggal Pengembalian</label>
-                          <div class="input-group date" id="waktu_pengembalian" data-target-input="nearest">
-                              <input type="text" class="form-control datetimepicker-input" data-target="#waktu_pengembalian" name="waktu_pengembalian">
-                              <div class="input-group-append" data-target="#waktu_pengembalian" data-toggle="datetimepicker">
-                                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                              </div>
-                          </div>
-                    </div> --}}
+                    </div> 
+
+                    {{-- Penyetuju 1 --}}
                     <div class="form-group">
-                        <label>Penyetuju 1</label>
-                        <select class="form-select" name="penyetuju1">
-                            <option></option>
-                            @foreach($users as $user)
-                            @if($user->level == 2)
-                            @continue
-                            @endif
-                            <option value="{{ $user->id }}">{{ $user->nama_user }}</option>
-                            @endforeach
-                        </select>
+                      <label for="exampleInputEmail1">Kepala Pool</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" disabled value="{{ $kepala_pool_user->nama_user }}">
+                      <input type="hidden" class="form-control" id="exampleInputEmail1" name="penyetuju1"  value="{{ $kepala_pool_user->id }}">
                     </div>
+                    {{-- Penyetuju 2 --}}
                     <div class="form-group">
-                        <label>Penyetuju 2</label>
+                        <label>Penyetuju</label>
                         <select class="form-select" name="penyetuju2">
                             <option></option>
                             @foreach($users as $user)
-                            @if($user->level == 2)
-                            @continue
+                            @if($user->level == 2 || $user->id === $kepala_pool_user->id)
+                              @continue
                             @endif
                             <option value="{{ $user->id }}">{{ $user->nama_user }}</option>
                             @endforeach

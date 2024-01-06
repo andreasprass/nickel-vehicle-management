@@ -1,5 +1,5 @@
 @extends('layout.dashboard_layout',[
-    'title' => 'User',
+    'title' => 'Driver',
 ])
 
 @section('main')
@@ -25,48 +25,38 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <a href="{{ url('user/create') }}" class="btn btn-primary mb-3">Tambah User <span><i class="fa fa-user-plus"></i></span></a>
+            <a href="{{ url('jabatan/create') }}" class="btn btn-primary mb-3">Tambah Data Jabatan <span><i class="	fa fa-id-badge"></i></span></a>
+            <a href="{{ route('pilih_kepala_pool') }}" class="btn btn-info mb-3">Pilih Jabatan Sebagai Kepala Pengelola Pool <span><i class="	fa fa-id-badge"></i></span></a>
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Data User</h3>
+                    <h3 class="card-title">Data Jabatan</h3>
                 </div>
                 <div class="card-body">
                     <table class="table display table-striped dt-responsive nowrap" style="width:100%" id="users_tabel">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
-                                <th>Email</th>
-                                <th>Level</th>
                                 <th>Jabatan</th>
+                                <th>Pengelola Pool</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
+                            @foreach ($jabatans as $jabatan)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $user->nama_user }}</td>
-                                <td>{{ $user->email }}</td>
+                                <td>{{ $jabatan->nama_jabatan }}</td>
                                 <td>
-                                    @if($user->level == 1)
-                                            <i class="bi bi-check-circle-fill text-success"> </i> - 
-                                        @else
-                                            <i class="bi bi-x-circle"> </i>Admin
-                                        
-                                    @endif 
-                                </td>
-                                <td>
-                                    @if($user->id_jabatan != null)
-                                        {{ $user->jabatans->nama_jabatan }}
+                                    @if($jabatan->kepala_pool == 0)
+                                    -
                                     @else
-                                        -
-                                    @endif 
+                                        <span class="right badge badge-info">Pengelola Pool</span>
+                                    @endif
                                 </td>
                                 <td>
-                                    <a href="{{ url('user/'.$user->id.'/edit') }}" class="btn btn-warning"><span> <i class="fas fa-pencil-alt"></i></span></a>
+                                    <a href="{{ url("jabatan/$jabatan->id/edit") }}" class="btn btn-warning"><span> <i class="fas fa-pencil-alt"></i></span></a>
                                     
-                                    <form action="{{ url('user/'.$user->id) }}" method="post" class="d-inline">
+                                    <form action="{{ url("jabatan/$jabatan->id") }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger" onclick="return confirm('Are you sure?')"><span><i class="fas fa-trash"></i></span></button>
@@ -79,10 +69,8 @@
                         <tfoot>
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
-                                <th>Email</th>
-                                <th>Level</th>
                                 <th>Jabatan</th>
+                                <th>Pengelola Pool</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>

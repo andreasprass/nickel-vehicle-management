@@ -16,7 +16,7 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::check() || !Auth()->user()->level == 2){
+        if(!Auth::check() || Auth()->user()->level != 2){
             abort(403);
         }
         return $next($request);

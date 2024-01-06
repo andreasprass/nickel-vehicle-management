@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Jabatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -26,7 +27,11 @@ class AdminUserController extends Controller
     public function create()
     {
         //
-        return view('user_add');
+        $users = User::all();
+        $jabatans = Jabatan::all();
+        return view('user_add',[
+            'jabatans'=>$jabatans,
+        ]);
         
     }
 
@@ -59,9 +64,11 @@ class AdminUserController extends Controller
     public function edit(User $user)
     {
         //
+        $jabatans = Jabatan::all();
         $user = User::find($user->id);
         return view('user_edit',[
             'user'=> $user,
+            'jabatans'=>$jabatans,
         ]);
     }
 

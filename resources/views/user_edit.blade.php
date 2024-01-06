@@ -69,17 +69,18 @@
                     <div class="form-group">
                         <label>Jabatan</label>
                         <select class="form-select" name="id_jabatan">
-                          <option>-- Pilih --</option>
-                            @if($user->id_jabatan == 2)
-                                <option value="2" selected>Manager</option>
-                                <option value="1">Supervisor</option>
-                            @elseif($user->id_jabatan == 1)
-                                <option value="2">Manager</option>
-                                <option value="1" selected>Supervisor</option>
-                            @else
-                                <option value="2">Manager</option>
-                                <option value="1">Supervisor</option>
-                            @endif
+                          @if($user->id_jabatan != null)
+                          <option value="{{ $user->id_jabatan }}">{{ $user->jabatans->nama_jabatan }}</option>  
+                          @else
+                          <option>-</option>
+                          @endif
+                          <option></option>
+                          @foreach($jabatans as $jabatan)
+                          @if($user->id_jabatan == $jabatan->id)
+                          @continue
+                          @endif
+                            <option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}</option>
+                          @endforeach
                         </select>
                       </div>
                   </div>

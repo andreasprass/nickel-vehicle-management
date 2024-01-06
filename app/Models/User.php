@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Jabatan;
 
 class User extends Authenticatable
 {
@@ -17,6 +18,10 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    public function jabatans(){
+        return $this->hasOne(Jabatan::class,'id','id_jabatan');
+    }
     protected $fillable = [
         'nama_user',
         'email',

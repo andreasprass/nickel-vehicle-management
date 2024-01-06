@@ -86,6 +86,7 @@
                   <!-- /.card-body -->
   
                   <div class="card-footer">
+                    <a href="{{ url('kendaraan') }}" class="btn btn-secondary">Kembali</a>
                     <button type="submit" class="btn btn-warning">Submit</button>
                   </div>
                 </form>

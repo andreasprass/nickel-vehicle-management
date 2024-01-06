@@ -58,9 +58,9 @@
                         <label>Jabatan</label>
                         <select class="form-select" name="id_jabatan">
                             <option></option>
-                            <option value="1">Staff</option>
-                            <option value="2">Kepala Pool</option>
-                            <option value="3">Kepala </option>
+                            @foreach($jabatans as $jabatan)
+                            <option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }} </option>
+                            @endforeach
                         </select>
                       </div>
                   </div>

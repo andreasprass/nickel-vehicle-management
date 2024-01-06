@@ -117,7 +117,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
-                <li class="nav-item">
+                  <li class="nav-item">
+                    <a href="{{ url('jabatan') }}" class="nav-link {{ Request::is('jabatan')?'active':'' }} ">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Jabatan</p>
+                    </a>
+                </li>
+                  <li class="nav-item">
                     <a href="{{ url('user') }}" class="nav-link {{ Request::is('user')?'active':'' }} ">
                         <i class="far fa-circle nav-icon"></i>
                         <p>User</p>
