@@ -31,14 +31,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{ $kendaraanCount }}</h3>
+                <h3>{{ $peminjaman }}</h3>
 
-                <p>Kendaraan</p>
+                <p>Peminjaman</p>
               </div>
               <div class="icon">
                 <i class="fas fa-car"></i>
               </div>
-              <a href="{{ url('kendaraan') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('pemesanan') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -46,12 +46,12 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>{{ $pemesanan_active_count }}</h3>
+                <h3>{{ $pemesanan_selesai }}</h3>
 
-                <p>Pemesanan Aktif</p>
+                <p>Pemesanan Selesai</p>
               </div>
               <div class="icon">
-                <i class="fas fa-clipboard"></i>
+                <i class="	fas fa-clipboard-check"></i>
               </div>
               <a href="{{ url('pemesanan') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -61,14 +61,14 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>{{ $driversCount }}</h3>
+                <h3>{{ $menunggu_persetujuan }}</h3>
 
-                <p>Driver</p>
+                <p>Menunggu Persetujuan</p>
               </div>
               <div class="icon">
                 <i class="far fa-address-card"></i>
               </div>
-              <a href="{{ url('driver') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('pemesanan') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -76,11 +76,11 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>{{ $pemesanan_perlu_persetujuan }}</h3>
-                <p>Meununggu Persetujuan</p>
+                <h3>{{ $pemesanan_ditolak }}</h3>
+                <p>Pemesanan Ditolak</p>
               </div>
               <div class="icon">
-                <i class="fas fa-hourglass-half"></i>
+                <i class="fas fa-times"></i>
               </div>
               <a href="{{ url('pemesanan') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
