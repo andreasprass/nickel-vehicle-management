@@ -31,6 +31,7 @@ Route::resource('kendaraan',AdminKendaraanController::class)->middleware('admin'
 Route::resource('pemesanan',AdminPemesananController::class)->middleware('admin');
 Route::get('cari-pemesanan',[AdminPemesananController::class,'cari_pemesanan'])->name('cari_pemesanan')->middleware('admin');
 Route::post('cari-data',[AdminPemesananController::class,'cari_data'])->name('cari_data')->middleware('admin');
+Route::put('dikembalikan/{id}',[AdminPemesananController::class,'dikembalikan'])->name('dikembalikan')->middleware('admin');
 
 Route::resource('service',AdminServisController::class)->middleware('admin');
 Route::resource('jabatan',AdminJabatanController::class)->middleware('admin');

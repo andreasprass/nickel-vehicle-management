@@ -139,4 +139,16 @@ class AdminPemesananController extends Controller
         ]);
 
     }
+
+    public function dikembalikan($id){
+        $pemesanan = new Pemesanan();
+        $get = $pemesanan->find($id);
+        if($get->status_persetujuan1 == 0 || $get->status_persetujuan2 == 0){
+            return back();
+        }else{
+            $pemesanan->where('id',$id)->update(['status_pemesanan'=>2]);
+        }
+        return back();
+
+    }
 }

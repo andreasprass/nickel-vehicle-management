@@ -152,7 +152,11 @@
                         {{-- <a href="#" class="btn btn-sm btn-primary">Add files</a> --}}
                         <a href="{{ url('pemesanan') }}" class="btn btn-sm btn-secondary">Kembali</a>
                         <a href="{{ url('pemesanan/'.$pemesanan->id.'/edit') }}" class="btn btn-sm btn-warning">Edit Pemesanan</a>
-                        <a href="#" class="btn btn-sm btn-success">Telah Dikembalikan</a>
+                        <form action="{{ url("dikembalikan",['id'=>$pemesanan->id]) }}" method="post" class="d-inline">
+                          @csrf
+                          @method('put')
+                          <button class="btn btn-sm btn-success" onclick="return confirm('Are you sure?')"><span>Telah Dikembalikan</span></button>
+                      </form>
                       </div>
                     </div>
                   </div>
