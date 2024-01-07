@@ -19,8 +19,8 @@ This Appliacation still in progress and need to make some feature and adjustment
 -   [x] Add admin authorization
 -   [x] Jabatan features
 -   [x] Fixing Jabatan bugs
--   [ ] Approval Pages and feature
+-   [x] Approval Pages and feature
 -   [ ] Order Graphic Report
--   [ ] Order Periodic Report in Excel
+-   [x] Order Periodic Report in Excel
 -   [ ] Add sewa feature
 -   [ ] Add validation

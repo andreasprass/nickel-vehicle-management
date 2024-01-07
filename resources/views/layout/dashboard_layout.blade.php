@@ -152,7 +152,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('service') }}" class="nav-link {{ Request::is('servis')?'active':'' }} ">
+              <a href="{{ url('cari-pemesanan') }}" class="nav-link {{ Request::is('cari-pemesanan')?'active':'' }} ">
+                  <i class="nav-icon 	fa fa-search"></i>
+              <p>
+                  Cari Pemesanan
+              </p>
+              </a>
+          </li>
+            <li class="nav-item">
+                <a href="{{ url('service') }}" class="nav-link {{ Request::is('service')?'active':'' }} ">
                     <i class="nav-icon fas fa-cogs"></i>
                 <p>
                     Servis Kendaraan
@@ -283,6 +291,60 @@ scratch. This page gets rid of all links and provides the needed markup only.
             'colvis'
         ]
       });
+
+      
+
+      // $('#cariDataPemesanan').submit(function(e) {
+      //     e.preventDefault();
+      //     $.ajax({
+      //         type: 'POST',
+      //         url: '{{ route("cari_data") }}',
+      //         data: $(this).serialize(),
+      //         success: function(response) {
+                 
+      //             console.log(response);
+      //             updateTable(response)
+                  
+      //         },
+      //         error: function(error) {
+      //             console.log(error);
+      //         }
+      //     });
+      // });
+
+        $('#cari_data').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'print',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                }
+            },
+            {
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                  columns: ':not(:last-child)',
+                }
+            },
+            
+            'colvis'
+          ]
+        });
+        
+
   });
 </script>
 

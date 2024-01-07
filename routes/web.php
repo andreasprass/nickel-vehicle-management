@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminDriverController;
 use App\Http\Controllers\AdminServisController;
+use App\Http\Controllers\PersetujuanController;
 use App\Http\Controllers\AdminJabatanController;
 use App\Http\Controllers\AdminKendaraanController;
 use App\Http\Controllers\AdminPemesananController;
@@ -28,10 +29,14 @@ Route::resource('driver',AdminDriverController::class)->middleware('admin');
 Route::resource('user',AdminUserController::class)->middleware('admin');
 Route::resource('kendaraan',AdminKendaraanController::class)->middleware('admin');
 Route::resource('pemesanan',AdminPemesananController::class)->middleware('admin');
+Route::get('cari-pemesanan',[AdminPemesananController::class,'cari_pemesanan'])->name('cari_pemesanan')->middleware('admin');
+Route::post('cari-data',[AdminPemesananController::class,'cari_data'])->name('cari_data')->middleware('admin');
+
 Route::resource('service',AdminServisController::class)->middleware('admin');
 Route::resource('jabatan',AdminJabatanController::class)->middleware('admin');
 Route::get('pilih-jabatan',[AdminJabatanController::class, 'pilih_kepala_pool'])->name('pilih_kepala_pool')->middleware('admin');
 Route::put('pilih-jabatan',[AdminJabatanController::class, 'simpan_kepala_pool'])->name('simpan_kepala_pool')->middleware('admin');
+Route::resource('persetujuan',PersetujuanController::class)->middleware('auth');
 
 Route::get('/login',[AuthController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login',[AuthController::class, 'loginValidation'])->name('loginValidation')->middleware('guest');

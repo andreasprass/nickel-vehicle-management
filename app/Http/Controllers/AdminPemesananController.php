@@ -116,4 +116,27 @@ class AdminPemesananController extends Controller
             return back();
         }
     }
+
+    public function cari_pemesanan(){
+        $data = Pemesanan::where('status_pemesanan',2)->get();
+        return view('cari_pemesanan',[
+            'pemesanans' => $data,
+        ]);
+    }
+
+    public function cari_data(Request $request){
+
+
+        $dataFiltered = Pemesanan::where('waktu_penggunaan','>=',$request->waktu_penggunaan)
+                ->Where('waktu_pengembalian','<=',$request->waktu_pengembalian)
+                ->where('status_pemesanan',2)
+                ->get();
+
+        return view('cari_pemesanan',[
+            'pemesanans'=>$dataFiltered,
+            'waktu_penggunaan' => $request->waktu_penggunaan,
+            'waktu_pengembalian' => $request->waktu_pengembalian,
+        ]);
+
+    }
 }
