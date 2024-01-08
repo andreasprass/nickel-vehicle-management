@@ -5,7 +5,7 @@ This web application is made to provide vehicle management system on a nickel mi
 ## Tech
 
 -   Framework: Laravel 10
--   Database: MySQL
+-   Database: MySQL (disimpan di database_file)
 -   Programming: PHP 8.2.4
 
 ## Account
@@ -42,5 +42,7 @@ This Appliacation still in progress and need to make some feature and adjustment
 -   [x] Approval Pages and feature
 -   [x] Kendaraan Order Graphic Report
 -   [x] Order Periodic Report in Excel
+-   [ ] Add Ditolak button
+-   [ ] Add jadwal servis feature
 -   [ ] Add sewa feature
 -   [ ] Add validation
