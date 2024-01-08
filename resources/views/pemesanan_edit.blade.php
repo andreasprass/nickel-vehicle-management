@@ -1,7 +1,6 @@
-@extends('layout.dashboard_layout',[
+@extends('layout.pemesanan_layout',[
     'title' => 'Pemesanan',
 ])
-
 @section('main')
   <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">

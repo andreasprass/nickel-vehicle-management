@@ -1,4 +1,4 @@
-@extends('layout.dashboard_layout',[
+@extends('layout.general_layout',[
     'title' => 'Kendaraan',
 ])
 

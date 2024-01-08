@@ -91,7 +91,30 @@
         @endcan
             
         <div class="row">
-          
+          <div class="col-6">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Data Pemakaian Jenis Kendaraan</h3>
+              </div>
+              <div class="card-body">
+                <div id="pemakaianJenisKendaraan">
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Data Pemakaian Kendaraan</h3>
+              </div>
+              <div class="card-body">
+                <div id="pemakaianKendaraan">
+
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->

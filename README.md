@@ -7,6 +7,25 @@ This web application is made to provide vehicle management system on a nickel mi
 -   Framework: Laravel
 -   Database: MySQL
 
+## Account
+
+Gojo Satoru
+level: admin
+username: gojo@gmail.com
+password: gojo
+
+Todo
+level: user
+jabatan: Kepala Lapangan
+username: todo@gmail.com
+password: yuji
+
+Itadori Yuji
+level: user
+jabatan: Kepala Pool
+username: yuji@gmail.com
+password: yuji
+
 ## PS
 
 This Appliacation still in progress and need to make some feature and adjustment.
@@ -20,7 +39,7 @@ This Appliacation still in progress and need to make some feature and adjustment
 -   [x] Jabatan features
 -   [x] Fixing Jabatan bugs
 -   [x] Approval Pages and feature
--   [ ] Order Graphic Report
+-   [x] Kendaraan Order Graphic Report
 -   [x] Order Periodic Report in Excel
 -   [ ] Add sewa feature
 -   [ ] Add validation

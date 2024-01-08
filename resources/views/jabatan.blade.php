@@ -1,5 +1,5 @@
-@extends('layout.dashboard_layout',[
-    'title' => 'Driver',
+@extends('layout.general_layout',[
+    'title' => 'Jabatan',
 ])
 
 @section('main')

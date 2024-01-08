@@ -1,7 +1,6 @@
-@extends('layout.dashboard_layout',[
-    'title' => 'Servis Kendaraan',
+@extends('layout.general_layout',[
+    'title' => 'Servis',
 ])
-
 @section('main')
   <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">

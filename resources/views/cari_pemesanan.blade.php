@@ -1,5 +1,5 @@
-@extends('layout.dashboard_layout',[
-    'title' => 'Car Pemesanan',
+@extends('layout.general_layout',[
+    'title' => 'Cari Pemesanan',
 ])
 
 @section('main')
