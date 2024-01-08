@@ -19,7 +19,7 @@ Todo
 level: user
 jabatan: Kepala Lapangan
 username: todo@gmail.com
-password: yuji
+password: todo
 
 Itadori Yuji
 level: user
