@@ -33,6 +33,11 @@ This Appliacation still in progress and need to make some feature and adjustment
 
 ## Want to do
 
+-   [x] Auth
+-   [x] Add Driver
+-   [x] Add Jabatan
+-   [x] Add User
+-   [x] Add Pemesanan
 -   [x] Fixing Pemesanan
 -   [x] Add some information details
 -   [x] Service feature
