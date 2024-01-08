@@ -1,5 +1,5 @@
-@extends('layout.dashboard_layout',[
-    'title' => 'Pemesanan',
+@extends('layout.general_layout',[
+    'title' => 'Persetujuan',
 ])
 
 @section('main')

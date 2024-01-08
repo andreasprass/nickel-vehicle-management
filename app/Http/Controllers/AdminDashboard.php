@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Driver;
 use App\Models\Kendaraan;
 use App\Models\Pemesanan;
@@ -48,10 +49,7 @@ class AdminDashboard extends Controller
                 }
             }
         }
-        // foreach($pemesanans_selesai->groupBy('id_kendaraan') as $pemesanan){
-        //     $kendaraan[] = $pemesanan->
 
-        // }
         $data = [];
         $label_kendaraan = [];
         $data_kendaraan = $pemesanans->get()->unique('id_kendaraan');
@@ -65,6 +63,8 @@ class AdminDashboard extends Controller
         }
         $value = [count($barang),count($orang)];
         
+        $id = auth::user()->id;
+        $persetujuans = Pemesanan::where('penyetuju1',$id)->orWhere('penyetuju2',$id)->get();
 
         return view('dashboard',[
             'peminjaman' => $peminjaman->count(),
@@ -75,6 +75,7 @@ class AdminDashboard extends Controller
             'value' => $value,
             'label_kendaraan' => $label_kendaraan,
             'data_kend' => $data,
+            'persetujuans' => $persetujuans,
 
         ]);
     }
