@@ -5,7 +5,8 @@ This web application is made to provide vehicle management system on a nickel mi
 ## Tech
 
 -   Framework: Laravel 10
--   Database: MySQL (disimpan di database_file)
+-   Database: MySQL (disimpan di file_database)
+-   ERD (file_design_system)
 -   Programming: PHP 8.2.4
 
 ## Account
