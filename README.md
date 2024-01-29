@@ -48,6 +48,7 @@ This Appliacation still in progress and need to make some feature and adjustment
 -   [x] Approval Pages and feature
 -   [x] Kendaraan Order Graphic Report
 -   [x] Order Periodic Report in Excel
+-   [ ] Detail Pemakaian Kendaraan
 -   [ ] Add Ditolak button
 -   [ ] Add jadwal servis feature
 -   [ ] Add sewa feature
