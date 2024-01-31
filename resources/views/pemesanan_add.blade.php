@@ -44,11 +44,11 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Jenis Kendaraan</label>
+                        <label>Kendaraan</label>
                         <select class="form-select" name="id_kendaraan">
                             <option></option>
                             @foreach($kendaraans as $kendaraan)
-                            <option value="{{ $kendaraan->id }}">{{ $kendaraan->nama_kendaraan }}</option>
+                            <option value="{{ $kendaraan->id }}">{{ $kendaraan->nama_kendaraan }} - ( {{ $kendaraan->jenis_kendaraan }} ) </option>
                             @endforeach
                         </select>
                     </div>

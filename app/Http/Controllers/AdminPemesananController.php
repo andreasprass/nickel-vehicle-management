@@ -33,7 +33,7 @@ class AdminPemesananController extends Controller
         $drivers = Driver::select('id','nama_driver')->orderBy('nama_driver')->get();
         
         $excludeKendaraanWhereInPemesanan = Pemesanan::where('status_pemesanan',0)->orWhere('status_pemesanan', 1)->pluck('id_kendaraan')->toArray();
-        $kendaraans = Kendaraan::select('id','nama_kendaraan')->orderBy('nama_kendaraan')->whereNotIn('id',$excludeKendaraanWhereInPemesanan)->get();
+        $kendaraans = Kendaraan::select('id','nama_kendaraan','jenis_kendaraan')->orderBy('nama_kendaraan')->whereNotIn('id',$excludeKendaraanWhereInPemesanan)->get();
 
 
         $kepala_pool = Jabatan::where('kepala_pool',1)->pluck('id');
