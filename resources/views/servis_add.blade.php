@@ -31,7 +31,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="{{ url('servis') }}" method="post">
+                <form action="{{ url('service') }}" method="post">
                     @csrf
                   <div class="card-body">
                     <div class="form-group">

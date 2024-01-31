@@ -17,7 +17,7 @@ class AdminPemesananController extends Controller
     public function index()
     {
         //
-        $data = Pemesanan::all();
+        $data = Pemesanan::where('status_pemesanan',0)->orWhere('status_pemesanan',1)->get();
         return view('pemesanan',[
             'pemesanans' => $data
         ]);
@@ -31,16 +31,18 @@ class AdminPemesananController extends Controller
         //
         $users = User::orderBy('nama_user')->get();
         $drivers = Driver::select('id','nama_driver')->orderBy('nama_driver')->get();
-        $kendaraans = Kendaraan::select('id','nama_kendaraan')->orderBy('nama_kendaraan')->get();
-        $pemesanans = Pemesanan::select('id', 'id_driver')->get();
-
         
+        $excludeKendaraanWhereInPemesanan = Pemesanan::where('status_pemesanan',0)->orWhere('status_pemesanan', 1)->pluck('id_kendaraan')->toArray();
+        $kendaraans = Kendaraan::select('id','nama_kendaraan')->orderBy('nama_kendaraan')->whereNotIn('id',$excludeKendaraanWhereInPemesanan)->get();
+
+
         $kepala_pool = Jabatan::where('kepala_pool',1)->pluck('id');
         if($kepala_pool == null){
             $kepala_pool = 'Pilih Jabatan untuk Mengelola Pool';
         }else{
             $kepala_pool_user = User::where('id_jabatan', $kepala_pool)->first();
         }
+
         return view('pemesanan_add',[
             'kendaraans' => $kendaraans,
             'drivers' => $drivers,

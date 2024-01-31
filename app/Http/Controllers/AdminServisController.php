@@ -40,7 +40,7 @@ class AdminServisController extends Controller
         //
         $data = $request->all();
         if(Servis::create($data)){
-            return redirect('/servis');
+            return redirect('/service');
         }else{
             return back();
         }

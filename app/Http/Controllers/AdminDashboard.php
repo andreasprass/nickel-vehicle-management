@@ -56,7 +56,6 @@ class AdminDashboard extends Controller
         $kendaraan = $pemesanans->groupBy('id_kendaraan')->selectRaw('count(*) as total')->get();
         foreach($kendaraan as $kendaraan){
             $data[] = $kendaraan->total;
-            
         };
         foreach($data_kendaraan as $data_kend){
             $label_kendaraan[] = $data_kend->kendaraans->nama_kendaraan;
