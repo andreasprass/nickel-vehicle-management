@@ -14,7 +14,7 @@ class Kendaraan extends Model
         'jenis_kendaraan',
         'nomor_polisi',
         'tahun_pembuatan',
-        'tanggal_beli_sewa',
+        
         'status_kendaraan'
     ];
 }

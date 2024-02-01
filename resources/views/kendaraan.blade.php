@@ -62,7 +62,7 @@
                                 </td>
                                 <td>
                                     <a href="{{ url("kendaraan/$kendaraan->id/edit") }}" class="btn btn-warning"><span> <i class="fas fa-pencil-alt"></i></span></a>
-                                    
+                                    <a href="{{ url("kendaraan/$kendaraan->id") }}" class="btn btn-info"><span> <i class="fas fa-info"></i></span></a>
                                     <form action="{{ url("kendaraan/$kendaraan->id") }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')

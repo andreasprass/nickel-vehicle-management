@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kendaraan;
+use Carbon\Carbon;
+use App\Models\Pemesanan;
 use Illuminate\Http\Request;
 
 class AdminKendaraanController extends Controller
@@ -13,8 +15,12 @@ class AdminKendaraanController extends Controller
     public function index()
     {
         //
+        $data = Kendaraan::all();
+        foreach ($data as $kendaraan) {
+            $kendaraan->tanggal_beli_sewa = Carbon::parse($kendaraan->tanggal_beli_sewa)->format('l, d F Y'); // Adjust the date format as needed
+        }
         return view('kendaraan',[
-            'kendaraans' => Kendaraan::all(),
+            'kendaraans' => $data,
         ]);
     }
 
@@ -47,6 +53,13 @@ class AdminKendaraanController extends Controller
     public function show(Kendaraan $kendaraan)
     {
         //
+        $penggunaan = Pemesanan::where('id_kendaraan',$kendaraan->id)->where('status_pemesanan',2)->orderBy('created_at','desc')->get();
+
+        $data = Kendaraan::find($kendaraan->id);
+        $data['tanggal_beli_sewa'] = Carbon::parse($data['tanggal_beli_sewa'])->format('l, d F Y');
+        return view('kendaraan_details',[
+            'kendaraan' => $data,
+        ]);
     }
 
     /**
