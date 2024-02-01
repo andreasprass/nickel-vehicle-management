@@ -68,13 +68,16 @@ class PersetujuanController extends Controller
 
         if($data->penyetuju1 == $id){
             Pemesanan::where('id',$persetujuan->id)->update(['status_persetujuan1'=>1]);
-        }elseif($data->penyetuju2 == $id){
+        }else{
             Pemesanan::where('id',$persetujuan->id)->update(['status_persetujuan2'=>1]);
         }
-
-        if($data->status_persetujuan1 == 1 AND $data->status_persetujuan2 == 1){
-            Pemesanan::where('id',$persetujuan->id)->update(['status_pemesanan'=>1]);
+        $data->refresh();
+        if($data->status_persetujuan1 == 1 && $data->status_persetujuan2 == 1){
+            Pemesanan::where('id',$persetujuan->id)->update(['status_pemesanan' => 1]);
+        }else{
+            dd('gagal');
         }
+
 
         return redirect()->route('persetujuan.index');
     }
