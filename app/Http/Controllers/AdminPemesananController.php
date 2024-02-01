@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Driver;
 use App\Models\Jabatan;
@@ -18,6 +19,14 @@ class AdminPemesananController extends Controller
     {
         //
         $data = Pemesanan::where('status_pemesanan',0)->orWhere('status_pemesanan',1)->get();
+        foreach ($data as $pemesanan) {
+            $pemesanan->waktu_penggunaan = Carbon::parse($pemesanan->waktu_penggunaan)->format('l, d F Y'); // Adjust the date format as needed
+            if( $pemesanan->waktu_pengembalian == null){
+                continue;
+            }else{
+                $pemesanan->waktu_pengembalian = Carbon::parse($pemesanan->waktu_pengembalian)->format('l, d F Y'); // Adjust the date format as needed
+            }
+        }
         return view('pemesanan',[
             'pemesanans' => $data
         ]);
@@ -145,10 +154,12 @@ class AdminPemesananController extends Controller
     public function dikembalikan($id){
         $pemesanan = new Pemesanan();
         $get = $pemesanan->find($id);
-        if($get->status_persetujuan1 == 0 || $get->status_persetujuan2 == 0){
+        if($get->status_persetujuan1 == 0 || $get->status_persetujuan2 == 0 || $get->status_pemesanan == 0 ){
             return back();
-        }else{
+        }elseif($get->status_pemesanan == 1){
             $pemesanan->where('id',$id)->update(['status_pemesanan'=>2]);
+        }else{
+            return back();
         }
         return back();
 
