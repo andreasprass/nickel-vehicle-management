@@ -210,21 +210,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 <script type="text/javascript">
   $(function () {
+    let jumlahPenggunaanPerMonth = @json($jumlahPenggunaanPerMonth);
+    let monthsPenggunaan = @json($monthsPenggunaan);
     var options = {
         chart: {
             type: 'line'
         },
         series: [{
-            name: 'sales',
-            data: [30,40,35,50,49,60,70,91,125]
+            name: 'Pemesanan Selesai',
+            data: jumlahPenggunaanPerMonth,
         }],
         dataLabels: {
             enabled: true
         },
         xaxis: {
-            categories: [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
+            categories: monthsPenggunaan,
         }
-        }
+    }
 
     var chart = new ApexCharts(document.querySelector("#stats-penggunaan-kendaraan"), options);
     chart.render();

@@ -53,12 +53,25 @@ class AdminKendaraanController extends Controller
     public function show(Kendaraan $kendaraan)
     {
         //
-        $penggunaan = Pemesanan::where('id_kendaraan',$kendaraan->id)->where('status_pemesanan',2)->orderBy('created_at','desc')->get();
+        $penggunaan = Pemesanan::where('id_kendaraan',$kendaraan->id)->where('status_pemesanan',2)->orderBy('waktu_penggunaan','asc')->get();
+        
+        $monthNames = [];
+        foreach($penggunaan as $item){
+            $monthNames[] = Carbon::parse($item->waktu_penggunaan)->format('F');
+        }
+
+        // Count the occurrences of each month
+        $monthCounts = array_count_values($monthNames);
+        $penggunaanLabel = array_keys($monthCounts);
+        $penggunaanValue = array_values($monthCounts);
+        // $monthCounts now contains an associative array where keys are month names and values are counts
 
         $data = Kendaraan::find($kendaraan->id);
         $data['tanggal_beli_sewa'] = Carbon::parse($data['tanggal_beli_sewa'])->format('l, d F Y');
         return view('kendaraan_details',[
             'kendaraan' => $data,
+            'jumlahPenggunaanPerMonth' => $penggunaanValue,
+            'monthsPenggunaan' => $penggunaanLabel,
         ]);
     }
 
