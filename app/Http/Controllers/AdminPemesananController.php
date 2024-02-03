@@ -151,13 +151,22 @@ class AdminPemesananController extends Controller
 
     }
 
-    public function dikembalikan($id){
+    public function dikembalikan($id, Request $request){
+
         $pemesanan = new Pemesanan();
         $get = $pemesanan->find($id);
+        $getData = $request->all();
+        $data = [
+            'status_pemesanan' => 2, 
+            'waktu_pengembalian' => $request->waktu_pengembalian,
+            'km_akhir' => $request->km_akhir,
+        ];
+        // dd($data);
+
         if($get->status_persetujuan1 == 0 || $get->status_persetujuan2 == 0 || $get->status_pemesanan == 0 ){
             return back();
         }elseif($get->status_pemesanan == 1){
-            $pemesanan->where('id',$id)->update(['status_pemesanan'=>2]);
+            $pemesanan->where('id',$id)->update($data);
         }else{
             return back();
         }

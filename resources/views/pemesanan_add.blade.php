@@ -56,6 +56,7 @@
                         <label for="exampleInputEmail1">Keperluan</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" name="keperluan" placeholder="Keperluan">
                     </div>
+                    
                     <div class="form-group">
                         <label>Tanggal Penggunaan</label>
                           <div class="input-group date" id="waktu_penggunaan" data-target-input="nearest">

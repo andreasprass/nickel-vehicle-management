@@ -142,7 +142,7 @@
                       <h5 class="mt-5 text-muted">Date</h5>
                       <ul class="list-unstyled">
                         <li>
-                          <a href="" class="btn-link text-secondary"><i class="far fa-calendar"></i>  Waktu Penggunaan :  {{ $pemesanan->waktu_penggunaan }}</a>
+                          <a href="" class="btn-link text-secondary"><i class="far fa-calendar"></i>  Waktu Pengembalian :  {{ $pemesanan->waktu_pengembalian }}</a>
                         </li>
                         <li>
                             <a href="" class="btn-link text-secondary"><i class="far fa-calendar-check"></i>  Waktu Pengembalian : {{ $pemesanan->waktu_pengembalian }}</a>
@@ -152,11 +152,11 @@
                         {{-- <a href="#" class="btn btn-sm btn-primary">Add files</a> --}}
                         <a href="{{ url('pemesanan') }}" class="btn btn-sm btn-secondary">Kembali</a>
                         <a href="{{ url('pemesanan/'.$pemesanan->id.'/edit') }}" class="btn btn-sm btn-warning">Edit Pemesanan</a>
-                        <form action="{{ url("dikembalikan",['id'=>$pemesanan->id]) }}" method="post" class="d-inline">
+                        {{-- <form action="{{ url("dikembalikan",['id'=>$pemesanan->id]) }}" method="post" class="d-inline">
                           @csrf
                           @method('put')
                           <button class="btn btn-sm btn-success" onclick="return confirm('Are you sure?')"><span>Telah Dikembalikan</span></button>
-                        </form>
+                        </form> --}}
                         <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#input_km_akhir">Dikembalikan</button>
                       </div>
                     </div>
@@ -170,18 +170,33 @@
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Pengembalian Kendaraan</h1>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      <form action="">
-                        <input type="text" placeholder="Masukan KM Akhir">
-                      </form>
+                      <form action="{{ url("dikembalikan",['id'=>$pemesanan->id]) }}" method="post">
+                        @csrf
+                        @method('put')
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Keperluan</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="km_akhir" placeholder="Kilometer Akhir">
+                      </div>
+                        <div class="form-group">
+                          <label>Tanggal Kembali</label>
+                            <div class="input-group date" id="waktu_pengembalian" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker-input" data-target="#waktu_pengembalian" name="waktu_pengembalian">
+                                <div class="input-group-append" data-target="#waktu_pengembalian" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                      </div> 
+                      
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
+                      <button type="submit" class="btn btn-primary">Dikembalikan</button>
                     </div>
+                    </form>
                   </div>
                 </div>
               </div>
