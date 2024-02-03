@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kendaraan;
 use Carbon\Carbon;
+use App\Models\Servis;
+use App\Models\Kendaraan;
 use App\Models\Pemesanan;
 use Illuminate\Http\Request;
 
@@ -54,7 +55,33 @@ class AdminKendaraanController extends Controller
     {
         //
         $penggunaan = Pemesanan::where('id_kendaraan',$kendaraan->id)->where('status_pemesanan',2)->orderBy('waktu_penggunaan','asc')->get();
-        
+        $lastPemesanan = Pemesanan::where('id_kendaraan',$kendaraan->id)->where('status_pemesanan',2)->orderBy('waktu_pengembalian','desc')->first();
+        $lastServis = Servis::where('id_kendaraan',$kendaraan->id)->orderBy('tanggal_servis','desc')->first();
+
+        // dd($lastServis);
+        //Servis
+
+        if($lastServis == null){
+            $status_servis = 'Belum ada Pengecekan atau Servis';
+            $status_servis_color = 'secondary';
+        }
+        elseif($lastPemesanan == null){
+            $status_servis = 'Belum ada Perjalanan';
+            $status_servis_color = 'secondary';
+        }else{
+            if($lastPemesanan->km_akhir >= $lastServis->km_servis_selanjutnya){
+                $status_servis = 'Melewati Kilometer Servis';
+                $status_servis_color = 'danger';
+            }elseif($lastPemesanan->km_akhir >= $lastServis->km_servis_selanjutnya - ($lastServis->km_servis_selanjutnya * 5/100)){
+                $status_servis = 'Mendekati Kilometer Servis';
+                $status_servis_color = 'warning';
+            }elseif($lastServis->km_servis_selanjutnya >= $lastPemesanan->km_akhir){
+                $status_servis = 'Sudah Servis';
+                $status_servis_color = 'success';
+            }
+        }
+
+        //formatting date time using carbon
         $monthNames = [];
         foreach($penggunaan as $item){
             $monthNames[] = Carbon::parse($item->waktu_penggunaan)->format('F');
@@ -64,7 +91,6 @@ class AdminKendaraanController extends Controller
         $monthCounts = array_count_values($monthNames);
         $penggunaanLabel = array_keys($monthCounts);
         $penggunaanValue = array_values($monthCounts);
-        // $monthCounts now contains an associative array where keys are month names and values are counts
 
         $data = Kendaraan::find($kendaraan->id);
         $data['tanggal_beli_sewa'] = Carbon::parse($data['tanggal_beli_sewa'])->format('l, d F Y');
@@ -72,6 +98,8 @@ class AdminKendaraanController extends Controller
             'kendaraan' => $data,
             'jumlahPenggunaanPerMonth' => $penggunaanValue,
             'monthsPenggunaan' => $penggunaanLabel,
+            'status_servis' => $status_servis,
+            'status_servis_color' => $status_servis_color,
         ]);
     }
 

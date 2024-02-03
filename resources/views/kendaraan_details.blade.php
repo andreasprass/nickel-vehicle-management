@@ -71,6 +71,10 @@
                                 <h5>Hak Milik</h5>
                                 @endif
                             </div>
+                            <div class="form-group">
+                              <label>Status Servis</label>
+                              <h5 class="badge badge-{{ $status_servis_color }} d-block w-25">{{ $status_servis }}</h5>
+                            </div>
                         </div>   
                     </div>
                 </div>
