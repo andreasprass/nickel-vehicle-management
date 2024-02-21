@@ -19,7 +19,7 @@ class AdminKendaraanController extends Controller
         $data = Kendaraan::all();
         foreach ($data as $kendaraan) {
             $kendaraan->tanggal_beli_sewa = Carbon::parse($kendaraan->tanggal_beli_sewa)->format('l, d F Y'); // Adjust the date format as needed
-        }
+        }   
         return view('kendaraan',[
             'kendaraans' => $data,
         ]);
